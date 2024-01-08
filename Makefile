@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/01/08 11:38:22 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/01/08 16:17:20 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,40 +15,43 @@ NAME		=		push_swap.a
 
 LIBFT		=		libft.a
 
+SRC_PATH	=		./src/
 SRCS 		=		push_swap.c
+SRCS_D 		=		$(SRC_PATH)push_swap.c
 
 LIBFT_PATH	=		./libft/
 
 OBJECTS		=		$(SRCS:.c=.o)
 
-INC			=		-I ./push_swap.h ./libft/libft.h
+INC			=		-I .includes/push_swap.h ./libft/libft.h
 
 all: 		$(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT_PATH)
 					@echo "Compiling Libft..."
-					@make -C $(LIBFT_PATH) $(LIBFT)
-					@echo "Compiling Libft Done !"
-					@make clean -C $(LIBFT_PATH)
+					@make bonus -C $(LIBFT_PATH) $(LIBFT)
+					@echo "OK !"
 					@cp $(LIBFT_PATH)$(LIBFT) $(NAME)
 					@echo "Creating Push_Swap Executable..."
 					@ar -rcs $(NAME) $(OBJECTS)
-					@echo "Push_Swap Executable Done !"
+					@echo "OK !"
 
-$(OBJECTS): $(SRCS)
+$(OBJECTS): $(SRCS_D)
 					@echo "Compiling Push_Swap..."
-					@clang -Wall -Wextra -Werror -c $(SRCS)
-					@echo "Compiling Push_Swap Done !"
+					@clang -Wall -Wextra -Werror -c $(SRCS_D)
+					@echo "OK !"
 
 clean:
+					@make clean -C $(LIBFT_PATH)
 					@echo "Cleaning Push_Swap Objects..."
 					@rm -f $(OBJECTS)
-					@echo "Cleaned Push_Swap up !"
+					@echo "OK !"
 
 fclean:		clean
+					@make fclean -C $(LIBFT_PATH)
 					@echo "Cleaning Push_Swap..."
 					@rm -f $(NAME)
-					@echo "Cleaned Push_Swap up !"
+					@echo "OK !"
 
 re:			fclean all 
 .PHONY:		all clean fclean re

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/08 11:34:37 by ade-beco         ###   ########.fr       */
+/*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
+/*   Updated: 2024/01/08 16:07:15 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(void)
-{
-	ft_putstr("Bonjour !");
-	return (1);
-}
+# include "../libft/libft.h"
+
+#endif
