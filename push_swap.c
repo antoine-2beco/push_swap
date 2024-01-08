@@ -6,11 +6,12 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/07 15:39:19 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:34:37 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
+#include "libft/libft.h"
 
 int	main(void)
 {

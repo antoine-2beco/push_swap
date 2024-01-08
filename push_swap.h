@@ -6,13 +6,13 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/07 15:30:40 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:13:21 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./Libft/libft.h"
+# include "./libft/libft.h"
 
 #endif
