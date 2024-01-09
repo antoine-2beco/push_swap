@@ -6,15 +6,16 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/09 16:08:55 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/09 17:04:03 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdbool.h>
+# include <limits.h>
 # include "../libft/libft.h"
-# include "../printf/ft_printf.h"
 
 typedef struct s_stack
 {
