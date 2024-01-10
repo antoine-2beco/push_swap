@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/01/10 15:00:30 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/01/10 16:15:36 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS_D 		=		$(SRC_PATH)push_swap.c $(SRC_PATH)stacks_utils.c
 
 OBJECTS		=		$(SRCS:.c=.o)
 
-INC			=		-I ./includes/$(NAME).h $(LIBFT_PATH)$(LIBFT).h
+INC			=		-I includes/$(NAME).h $(LIBFT_PATH)$(LIBFT).h
 
 all: 		$(PUSH_SWAP)
 
