@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/10 16:56:25 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:09:50 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	free_stack(t_stack **stack)
 	t_stack	*temp;
 
 	if (!stack)
-		return (0);
+		return (*(int *)error(0, "stack is NULL in free_stack"));
 	while (*stack)
 	{
 		temp = (*stack)->next;
@@ -37,44 +37,45 @@ int	free_stack(t_stack **stack)
 	return (1);
 }
 
-static t_stack	*new_node(int nbr, int index)
+static t_stack	*new_node(t_stack **node, int nbr, int index)
 {
-	t_stack	*node;
+	t_stack	*new_node;
 
-	node = (t_stack *)malloc(sizeof(t_stack));
-	if (!node)
-		return (0);
-	node->nbr = nbr;
-	node->index = index;
-	node->push_cost = 0;
-	node->above_median = NULL;
-	node->cheapest = NULL;
-	node->target = NULL;
-	node->prev = NULL;
-	node->next = NULL;
-	return (node);
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (error(0, "node is NULL in new_nde\n"));
+	new_node->nbr = nbr;
+	new_node->index = index;
+	new_node->push_cost = 0;
+	new_node->above_median = NULL;
+	new_node->cheapest = NULL;
+	new_node->target = NULL;
+	new_node->prev = NULL;
+	new_node->next = NULL;
+	*node = new_node;
+	return (*node);
 }
 
-static int	add_node(t_stack **stack, char *arg, int i)
+static int	add_node(t_stack ***stack, char *arg, int i)
 {
 	t_stack	*node;
 
-	node = new_node(ft_atoi(arg), i);
-	if (!stack || !node)
-		return (0);
+	new_node(&node, ft_atoi(arg), i);
+	if (!stack ||!node)
+		return (*(int *)error(0, "stack or node is NULL in add_node\n"));
 	if (*stack)
 	{
-		while ((*stack)->next)
-			*stack = (*stack)->next;
-		node->prev = *stack;
-		(*stack)->next = node; 
+		while ((**stack)->next)
+			**stack = (**stack)->next;
+		node->prev = **stack;
+		(**stack)->next = node; 
 	}
 	else
-		*stack = node;
+		*stack = &node;
 	return (1);
 }
 
-int	init_stack(int argc, char *argv[], t_stack **stack)
+int	init_stack(int argc, char *argv[], t_stack ***stack)
 {
 	char	*args;
 	int		i;
@@ -90,7 +91,7 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	while (args[++i])
 	{
 		if (!add_node(stack, &args[i], i))
-			return (0);
+			return (*(int *)error(0, "add_node return NULL\n"));
 	}
 	if (argc == 2)
 		free(args);
