@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/11 15:09:50 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:11:39 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,42 +56,51 @@ static t_stack	*new_node(t_stack **node, int nbr, int index)
 	return (*node);
 }
 
-static int	add_node(t_stack ***stack, char *arg, int i)
+static int	add_node(t_stack ****stack, char *arg, int i)
 {
 	t_stack	*node;
 
 	new_node(&node, ft_atoi(arg), i);
+	ft_printf("node created : nbr = %i, index = %i, push_cost = %i\n", (node)->nbr, (node)->index, (node)->push_cost);
+	
 	if (!stack ||!node)
 		return (*(int *)error(0, "stack or node is NULL in add_node\n"));
-	if (*stack)
+	if (**stack)
 	{
-		while ((**stack)->next)
-			**stack = (**stack)->next;
-		node->prev = **stack;
-		(**stack)->next = node; 
+		while ((***stack)->next)
+		{
+			***stack = (***stack)->next;
+		}
+		node->prev = ***stack;
+		(***stack)->next = node; 
 	}
 	else
-		*stack = &node;
+	{
+		ft_printf("y\n");
+		**stack = &node;
+	}
 	return (1);
 }
 
 int	init_stack(int argc, char *argv[], t_stack ***stack)
 {
-	char	*args;
+	char	**args;
 	int		i;
 
 	i = -1;
 	if (argc == 2)
-		args = *(ft_split(argv[1], ' '));
+		args = ft_split(argv[1], ' ');
 	else
 	{
 		argv++;
-		args = *argv;
+		args = argv;
 	}
 	while (args[++i])
 	{
-		if (!add_node(stack, &args[i], i))
+		ft_printf("arg[%i]\n", i);
+		if (!add_node(&stack, args[i], i))
 			return (*(int *)error(0, "add_node return NULL\n"));
+		//ft_printf("while -- nbr = %i, index = %i, push_cost = %i\n", (**stack)->nbr, (**stack)->index, (**stack)->push_cost);
 	}
 	if (argc == 2)
 		free(args);
