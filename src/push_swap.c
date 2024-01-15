@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:38:06 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:45:46 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int	push_swap(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	ft_printf("return = %i", push_swap(argc, argv));
+	system("leaks a.out");
 }

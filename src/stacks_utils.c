@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:43:00 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:44:46 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,10 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-	{
-		argv++;
-		args = argv;
-	}
+		args = ++argv;
 	while (args[++i])
-	{
 		if (!add_node(stack, ft_atoi(args[i]), i))
 			return (*(int *)error(0, "add_node return NULL\n"));
-	}
 	if (argc == 2)
 		free(args);
 	return (1);
