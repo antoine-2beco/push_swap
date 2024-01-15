@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/11 14:51:40 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:44:19 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack
 void	*error(void *ret, char *str);
 
 // stacks_utils
-int	init_stack(int argc, char *argv[], t_stack ***stack);
+int	init_stack(int argc, char *argv[], t_stack **stack);
 int	free_stack(t_stack **stack);
 
 #endif
