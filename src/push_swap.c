@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/17 16:53:20 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:12:26 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ int	push_swap(int argc, char *argv[])
 	push_node(&stack_b, &stack_a, 'b');
 	push_node(&stack_b, &stack_a, 'b');
 	push_node(&stack_b, &stack_a, 'b');
+	push_node(&stack_b, &stack_a, 'b');
 	print_stack(&stack_a, 'a');
 	print_stack(&stack_b, 'b');
-	rotate_rotate_node(&stack_a, &stack_b);
+	d_reverse_rotate_node(&stack_a, &stack_b);
 	reinit_stack_index(&stack_a, &stack_b);
 	print_stack(&stack_a, 'a');
-	print_stack(&stack_b, 'b');\
+	print_stack(&stack_b, 'b');
 	return (1);
 }
 
