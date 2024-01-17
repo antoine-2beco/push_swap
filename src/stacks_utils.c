@@ -6,12 +6,54 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/17 13:09:38 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:34:53 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
+
+int	reinit_stack_index(t_stack	**stack_a, t_stack	**stack_b)
+{
+	t_stack	*temp;
+	int		i;
+
+	temp = *stack_a;
+	i = 0;
+	if (!temp)
+		return (0);
+	while (temp)
+	{
+		temp->index = i++;
+		temp = temp->next;
+	}
+	temp = *stack_b;
+	i = 0;
+	if (!temp)
+		return (0);
+	while (temp)
+	{
+		temp->index = i++;
+		temp = temp->next;
+	}
+	return (1);
+}
+
+int	print_stack(t_stack **stack, char stack_name)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	if (!temp)
+		return (0);
+	ft_printf("=== stack_%c ===\n", stack_name);
+	while (temp)
+	{
+		printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n", temp, temp->nbr, temp->index, temp->push_cost,temp->prev, temp->next);
+		temp = temp->next;
+	}
+	return (1);
+}
 
 int	free_stack(t_stack **stack)
 {
@@ -76,10 +118,8 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	else
 		args = ++argv;
 	while (args[++i])
-	{
 		if (!add_node(stack, ft_atoi(args[i]), i))
 			return (*(int *)error(0, "add_node return NULL\n"));
-	}
 	if (argc == 2)
 		free(args);
 	return (1);
