@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/01/17 17:14:21 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/01/18 12:39:59 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIBFT		=		libft
 LIBFT_PATH	=		./libft/
 
 SRC_PATH	=		./src/
-SRCS 		=		push_swap.c stacks_utils.c sort_operations.c sort_operations_shortcuts.c
-SRCS_D 		=		$(SRC_PATH)push_swap.c $(SRC_PATH)stacks_utils.c $(SRC_PATH)sort_operations.c $(SRC_PATH)sort_operations_shortcuts.c
+SRCS 		=		push_swap.c stacks_utils.c operations.c operations_shortcuts.c sort_utils.c
+SRCS_D 		=		$(SRC_PATH)push_swap.c $(SRC_PATH)stacks_utils.c $(SRC_PATH)operations.c $(SRC_PATH)operations_shortcuts.c $(SRC_PATH)sort_utils.c
 
 OBJECTS		=		$(SRCS:.c=.o)
 

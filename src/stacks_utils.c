@@ -6,12 +6,53 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/17 17:13:43 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:07:05 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
+
+int get_stack_len(t_stack **stack)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 1;
+	temp = *stack;
+	if (!temp)
+		return (0);
+	while (temp->next)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
+}
+
+int	free_stack(t_stack **stack)
+{
+	t_stack	*temp;
+
+	if (!stack)
+		return (*(int *)error(0, "stack is NULL in free_stack"));
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		temp->nbr = 0;
+		temp->index = 0;
+		temp->push_cost = 0;
+		temp->above_median = NULL;
+		temp->cheapest = NULL;
+		temp->target = NULL;
+		temp->prev = NULL;
+		temp->next = NULL;
+		free (temp);
+		temp = NULL;
+		*stack = temp;
+	}
+	return (1);
+}
 
 int	reinit_stack_index(t_stack	**stack_a, t_stack	**stack_b)
 {
@@ -35,46 +76,6 @@ int	reinit_stack_index(t_stack	**stack_a, t_stack	**stack_b)
 	{
 		temp->index = i++;
 		temp = temp->next;
-	}
-	return (1);
-}
-
-int	print_stack(t_stack **stack, char stack_name)
-{
-	t_stack	*temp;
-
-	temp = *stack;
-	if (!temp)
-		return (0);
-	ft_printf("=== stack_%c ===\n", stack_name);
-	while (temp)
-	{
-		printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n", temp, temp->nbr, temp->index, temp->push_cost,temp->prev, temp->next);
-		temp = temp->next;
-	}
-	return (1);
-}
-
-int	free_stack(t_stack **stack)
-{
-	t_stack	*temp;
-
-	if (!stack)
-		return (*(int *)error(0, "stack is NULL in free_stack"));
-	while (*stack)
-	{
-		temp = (*stack)->next;
-		temp->nbr = 0;
-		temp->index = 0;
-		temp->push_cost = 0;
-		temp->above_median = NULL;
-		temp->cheapest = NULL;
-		temp->target = NULL;
-		temp->prev = NULL;
-		temp->next = NULL;
-		free (temp);
-		temp = NULL;
-		*stack = temp;
 	}
 	return (1);
 }
