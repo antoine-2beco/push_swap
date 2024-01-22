@@ -6,33 +6,28 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 12:16:25 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:05:46 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-int	sort_3_nodes(t_stack **stack, char stack_name)
+t_stack	*get_max_node(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*max_node;
+	t_stack *temp;
+	t_stack *max_node;
+	int		i;
 
-	max_node = *stack;
-	temp = (*stack)->next;
+	temp = *stack;
+	i = 0;
 	while (temp)
 	{
-		if (temp->nbr > max_node->nbr)
+		if (i < temp->nbr)
 			max_node = temp;
 		temp = temp->next;
 	}
-	if (max_node->index == 1)
-		reverse_rotate_node(stack, stack_name);
-	if (max_node->index == 0)
-		rotate_node(stack, stack_name);
-	if (!is_sorted(stack))
-		swap_node(stack, stack_name);
-	return (1);
+	return (max_node);
 }
 
 int	is_sorted(t_stack **stack)

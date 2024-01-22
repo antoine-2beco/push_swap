@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 12:16:28 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:08:37 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,17 @@ static int	print_stack(t_stack **stack, char stack_name)
 	ft_printf("=== stack_%c ===\n", stack_name);
 	while (temp)
 	{
-		printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n",
-			temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next);
-			temp = temp->next;
+		if (stack_name == 'b')
+		{
+			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n",
+				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next);
+		}
+		else
+		{
+			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i\n",
+				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr);
+		}
+		temp = temp->next;
 	}
 	return (1);
 }
@@ -45,9 +53,10 @@ int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 		return (1);
 	if (stack_a_len <= 3)
 		return (sort_3_nodes(stack_a, 'a'));
-	//print_stack(stack_a, 'a');
-	print_stack(stack_b, 'b');
-	return (0);
+	push_node(stack_b, stack_a, 'b');
+	push_node(stack_b, stack_a, 'b');
+	init_target_node(stack_a, stack_b);
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -63,7 +72,7 @@ int	main(int argc, char *argv[])
 		return (error(0, "init_stack return NULL\n"));
 	if (!sort_stacks(&stack_a, &stack_b, get_stack_len(&stack_a)))
 		return (error(0, "sort_stacks return NULL\n"));
-	// print_stack(&stack_a, 'a');
-	// print_stack(&stack_b, 'b');
+	print_stack(&stack_a, 'a');
+	print_stack(&stack_b, 'b');
 	return (1);
 }
