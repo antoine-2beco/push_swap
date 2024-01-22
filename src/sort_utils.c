@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/18 13:03:55 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:16:25 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	sort_3_nodes(t_stack **stack, char stack_name)
 
 	max_node = *stack;
 	temp = (*stack)->next;
-	while (temp->next)
+	while (temp)
 	{
 		if (temp->nbr > max_node->nbr)
 			max_node = temp;
@@ -46,7 +46,7 @@ int	is_sorted(t_stack **stack)
 	temp = *stack;
 	if (!temp || !temp->next)
 		return (0);
-	while (temp->next)
+	while (temp)
 	{
 		j = temp->nbr;
 		if (j < i)
@@ -56,5 +56,3 @@ int	is_sorted(t_stack **stack)
 	}
 	return (1);
 }
-
-// two same args

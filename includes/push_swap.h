@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/18 13:04:45 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 10:54:10 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	*error(void *ret, char *str);
+int		error(int ret, char *str);
 int		push_swap(int argc, char *argv[]);
 
 

@@ -6,14 +6,14 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/18 12:07:05 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:02:09 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-int get_stack_len(t_stack **stack)
+int	get_stack_len(t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
@@ -35,7 +35,7 @@ int	free_stack(t_stack **stack)
 	t_stack	*temp;
 
 	if (!stack)
-		return (*(int *)error(0, "stack is NULL in free_stack"));
+		return (error(0, "stack is NULL in free_stack"));
 	while (*stack)
 	{
 		temp = (*stack)->next;
@@ -86,10 +86,10 @@ static int	add_node(t_stack **stack, int nbr, int index)
 	t_stack	*last_node;
 
 	if (!stack)
-		return (*(int *)error(0, "stack is NULL in add_node\n"));
+		return (error(0, "stack is NULL in add_node\n"));
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return (*(int *)error(0, "node malloc failed in add_node\n"));
+		return (error(0, "node malloc failed in add_node\n"));
 	node->nbr = nbr;
 	node->index = index;
 	node->next = NULL;
@@ -112,15 +112,25 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 {
 	char	**args;
 	int		i;
+	int		j;
+	int		k;
 
 	i = -1;
+	j = -1;
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
 		args = ++argv;
 	while (args[++i])
-		if (!add_node(stack, ft_atoi(args[i]), i))
-			return (*(int *)error(0, "add_node return NULL\n"));
+	{
+		k = ft_atoi(args[i]);
+		while (args[++j])
+			if (ft_atoi(args[j]) == k && j != i)
+				return (error(0, "Two or many same numbers\n"));
+		if (!add_node(stack, k, i))
+			return (error(0, "add_node return NULL\n"));
+		j = -1;
+	}
 	if (argc == 2)
 		free(args);
 	return (1);

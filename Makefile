@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/01/18 12:39:59 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/01/22 11:31:18 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ $(PUSH_SWAP): $(OBJECTS) $(LIBFT_PATH)
 					@echo "Compiling Libft..."
 					@make bonus -C $(LIBFT_PATH) $(LIBFT).a
 					@echo "OK !"
-					@cp $(LIBFT_PATH)$(LIBFT).a $(PUSH_SWAP).a
+					@cp $(LIBFT_PATH)$(LIBFT).a $(PUSH_SWAP)
 					@echo "Creating Push_Swap Executable..."
-					@ar -rcs $(PUSH_SWAP).a $(OBJECTS)
+					@ar -rcs $(PUSH_SWAP) $(OBJECTS)
 					@echo "OK !"
 
 $(OBJECTS): $(SRCS_D)
@@ -49,7 +49,7 @@ clean:
 fclean:		clean
 					@make fclean -C $(LIBFT_PATH)
 					@echo "Cleaning Push_Swap..."
-					@rm -f $(PUSH_SWAP).a
+					@rm -f $(PUSH_SWAP)
 					@echo "OK !"
 
 re:			fclean all 
