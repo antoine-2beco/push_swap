@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 15:05:33 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:24:52 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		d_reverse_rotate_node(t_stack **stack_a, t_stack **stack_b);
 // sort
 int		sort_3_nodes(t_stack **stack, char stack_name);
 int		init_target_node(t_stack **stack_a, t_stack **stack_b);
+int		init_push_cost(t_stack **stack);
 
 // sort_utils
 t_stack	*get_max_node(t_stack **stack);

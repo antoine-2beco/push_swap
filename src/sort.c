@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 15:05:57 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:28:22 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,31 @@ int	init_target_node(t_stack **stack_a, t_stack **stack_b)
 			temp_b = temp_b->next;
 		}
 		temp_a = temp_a->next;
+	}
+	return (1);
+}
+
+int	init_push_cost(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack	*target;
+	int		max_index;
+	int		push_cost;
+
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+	max_index = temp->index + 1;
+	temp = *stack;
+	while (temp)
+	{
+		target = temp->target;
+		push_cost = temp->index;
+		if (push_cost > (max_index - push_cost))
+			push_cost = (max_index - push_cost);
+		push_cost += (1 + target->index);
+		temp->push_cost = push_cost;
+		temp = temp->next;
 	}
 	return (1);
 }

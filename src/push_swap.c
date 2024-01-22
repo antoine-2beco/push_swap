@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 14:08:37 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:27:17 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	print_stack(t_stack **stack, char stack_name)
 		}
 		else
 		{
-			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i\n",
-				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr);
+			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i, push_cost = %i\n",
+				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr, temp->push_cost);
 		}
 		temp = temp->next;
 	}
@@ -55,7 +55,10 @@ int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 		return (sort_3_nodes(stack_a, 'a'));
 	push_node(stack_b, stack_a, 'b');
 	push_node(stack_b, stack_a, 'b');
+	reinit_stack_index(stack_a, stack_b);
 	init_target_node(stack_a, stack_b);
+	init_push_cost(stack_a);
+
 	return (1);
 }
 
