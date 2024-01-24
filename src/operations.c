@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:57:35 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 14:46:37 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:19:23 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r)
 	if (!*stack_p)
 		return (0);
 	first_node_r = *stack_p;
+	second_node_r = NULL;
 	second_node_r = first_node_r->next;
 	first_node_r->next = NULL;
 	if (*stack_r)
@@ -55,7 +56,8 @@ int	push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r)
 		first_node_p->prev = first_node_r;
 	}
 	first_node_r->prev = NULL;
-	second_node_r->prev = NULL;
+	if (second_node_r)
+		second_node_r->prev = NULL;
 	*stack_r = first_node_r;
 	*stack_p = second_node_r;
 	reinit_stack_index(stack_r);

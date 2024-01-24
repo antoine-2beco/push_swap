@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 16:13:05 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:58:52 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,27 @@ int	sort_push_node(t_stack **stack_p, char stack_p_name,
 	return (1);
 }
 
-int	sort_push_back_node(t_stack **node, t_stack **stack_a, t_stack **stack_b)
+int	sort_push_back_node(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
+	t_stack	*temp_a;
+	t_stack	*temp_n;
 	int		target_val;
 
 	target_val = 0;
-	temp = *stack_a;
-	(*node)->target = get_min_node(stack_a);
-	while (temp)
+	temp_a = *stack_a;
+	temp_n = *stack_b;
+	temp_n->target = get_min_node(stack_a);
+	while (temp_a)
 	{
-		if (((*node)->nbr < temp->nbr)
-			&& (!target_val || target_val > (temp->nbr - (*node)->nbr)))
+		if ((temp_n->nbr < temp_a->nbr)
+			&& (!target_val || target_val > (temp_a->nbr - temp_n->nbr)))
 		{
-			target_val = (temp->nbr - (*node)->nbr);
-			(*node)->target = temp;
+			target_val = (temp_a->nbr - temp_n->nbr);
+			temp_n->target = temp_a;
 		}
-		temp = temp->next;
+		temp_a = temp_a->next;
 	}
-	put_node_on_top(stack_a, 'a', &(*node)->target);
+	put_node_on_top(stack_a, 'a', &temp_n->target);
 	push_node(stack_b, stack_a, 'a');
 	//printf("%i", (*stack_b)->nbr);
 	return (1);
