@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 15:21:44 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:18:35 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,31 @@ static int	print_stack(t_stack **stack, char stack_name)
 
 int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 {
+	t_stack **temp;
+	int 	i;
+
+	i = get_stack_len(stack_b);
+	i = 4;
+
 	if (is_sorted(stack_a))
 		return (1);
 	if (stack_a_len <= 3)
-		return (sort_3_nodes(stack_a, 'a', 0));
+		return (sort_3_nodes(stack_a, 'a'));
 	push_node(stack_a, stack_b, 'b');
 	push_node(stack_a, stack_b, 'b');
 	while (get_stack_len(stack_a) > 3)
 	{
 		init_target_node(stack_a, stack_b);
 		init_push_cost(stack_a);
-		push_min_cost_node(stack_a, 'a', stack_b, 'b');
+		sort_push_node(stack_a, 'a', stack_b, 'b');
 	}
-	sort_3_nodes(stack_a, 'a', 1);
+	sort_3_nodes(stack_a, 'a');
+	temp = stack_b;
+	while (i-- > 0) //get_stack_len(stack_b) > 1
+	{
+		sort_push_back_node(temp, stack_a, stack_b);
+		temp = &(*stack_b)->next;
+	}
 	return (1);
 }
 

@@ -6,27 +6,23 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 15:19:50 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:13:05 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-// mode 0 == ascending || mode 1 == descending
-int	sort_3_nodes(t_stack **stack, char stack_name, int mode)
+int	sort_3_nodes(t_stack **stack, char stack_name)
 {
 	t_stack	*m_node;
 
-	if (mode == 0)
-		m_node = get_max_node(stack);
-	else
-		m_node = get_min_node(stack);
+	m_node = get_max_node(stack);
 	if (m_node->index == 1)
 		reverse_rotate_node(stack, stack_name);
 	if (m_node->index == 0)
 		rotate_node(stack, stack_name);
-	if (m_node->nbr == (((*stack)->next)->next)->nbr)
+	if (!is_sorted(stack))
 		swap_node(stack, stack_name);
 	return (1);
 }
@@ -58,6 +54,7 @@ int	init_target_node(t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
+
 int	init_push_cost(t_stack **stack)
 {
 	t_stack	*temp;
@@ -80,7 +77,7 @@ int	init_push_cost(t_stack **stack)
 	return (1);
 }
 
-int	push_min_cost_node(t_stack **stack_p, char stack_p_name,
+int	sort_push_node(t_stack **stack_p, char stack_p_name,
 	t_stack **stack_r, char stack_r_name)
 {
 	t_stack	*temp;
@@ -97,5 +94,29 @@ int	push_min_cost_node(t_stack **stack_p, char stack_p_name,
 	put_node_on_top(stack_p, stack_p_name, &min_cost_node);
 	put_node_on_top(stack_r, stack_r_name, &min_cost_node->target);
 	push_node(stack_p, stack_r, stack_r_name);
+	return (1);
+}
+
+int	sort_push_back_node(t_stack **node, t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*temp;
+	int		target_val;
+
+	target_val = 0;
+	temp = *stack_a;
+	(*node)->target = get_min_node(stack_a);
+	while (temp)
+	{
+		if (((*node)->nbr < temp->nbr)
+			&& (!target_val || target_val > (temp->nbr - (*node)->nbr)))
+		{
+			target_val = (temp->nbr - (*node)->nbr);
+			(*node)->target = temp;
+		}
+		temp = temp->next;
+	}
+	put_node_on_top(stack_a, 'a', &(*node)->target);
+	push_node(stack_b, stack_a, 'a');
+	//printf("%i", (*stack_b)->nbr);
 	return (1);
 }
