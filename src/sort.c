@@ -6,31 +6,27 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 15:28:22 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:19:50 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-int	sort_3_nodes(t_stack **stack, char stack_name)
+// mode 0 == ascending || mode 1 == descending
+int	sort_3_nodes(t_stack **stack, char stack_name, int mode)
 {
-	t_stack	*temp;
-	t_stack	*max_node;
+	t_stack	*m_node;
 
-	max_node = *stack;
-	temp = (*stack)->next;
-	while (temp)
-	{
-		if (temp->nbr > max_node->nbr)
-			max_node = temp;
-		temp = temp->next;
-	}
-	if (max_node->index == 1)
+	if (mode == 0)
+		m_node = get_max_node(stack);
+	else
+		m_node = get_min_node(stack);
+	if (m_node->index == 1)
 		reverse_rotate_node(stack, stack_name);
-	if (max_node->index == 0)
+	if (m_node->index == 0)
 		rotate_node(stack, stack_name);
-	if (!is_sorted(stack))
+	if (m_node->nbr == (((*stack)->next)->next)->nbr)
 		swap_node(stack, stack_name);
 	return (1);
 }
@@ -70,10 +66,7 @@ int	init_push_cost(t_stack **stack)
 	int		push_cost;
 
 	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-	max_index = temp->index + 1;
-	temp = *stack;
+	max_index = get_stack_len(&temp);
 	while (temp)
 	{
 		target = temp->target;
@@ -84,5 +77,25 @@ int	init_push_cost(t_stack **stack)
 		temp->push_cost = push_cost;
 		temp = temp->next;
 	}
+	return (1);
+}
+
+int	push_min_cost_node(t_stack **stack_p, char stack_p_name,
+	t_stack **stack_r, char stack_r_name)
+{
+	t_stack	*temp;
+	t_stack	*min_cost_node;
+
+	temp = (*stack_p)->next;
+	min_cost_node = *stack_p;
+	while (temp)
+	{
+		if (min_cost_node->push_cost > temp->push_cost)
+			min_cost_node = temp;
+		temp = temp->next;
+	}
+	put_node_on_top(stack_p, stack_p_name, &min_cost_node);
+	put_node_on_top(stack_r, stack_r_name, &min_cost_node->target);
+	push_node(stack_p, stack_r, stack_r_name);
 	return (1);
 }

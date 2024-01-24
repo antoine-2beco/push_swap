@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 15:24:52 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:18:34 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		push_swap(int argc, char *argv[]);
 // stacks_utils
 int		get_stack_len(t_stack **stack);
 int		free_stack(t_stack **stack);
-int		reinit_stack_index(t_stack	**stack_a, t_stack	**stack_b);
+int		reinit_stack_index(t_stack	**stack);
 int		init_stack(int argc, char *argv[], t_stack **stack);
 
 // operations
@@ -54,12 +54,16 @@ int		d_rotate_node(t_stack **stack_a, t_stack **stack_b);
 int		d_reverse_rotate_node(t_stack **stack_a, t_stack **stack_b);
 
 // sort
-int		sort_3_nodes(t_stack **stack, char stack_name);
+int	sort_3_nodes(t_stack **stack, char stack_name, int mode);
 int		init_target_node(t_stack **stack_a, t_stack **stack_b);
 int		init_push_cost(t_stack **stack);
+int		push_min_cost_node(t_stack **stack_p, char stack_p_name,
+			t_stack **stack_r, char stack_r_name);
 
 // sort_utils
+int		put_node_on_top(t_stack **stack, char stack_name, t_stack **node);
 t_stack	*get_max_node(t_stack **stack);
+t_stack	*get_min_node(t_stack **stack);
 int		is_sorted(t_stack **stack);
 
 #endif

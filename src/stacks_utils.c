@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 12:02:09 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:14:34 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,12 @@ int	free_stack(t_stack **stack)
 	return (1);
 }
 
-int	reinit_stack_index(t_stack	**stack_a, t_stack	**stack_b)
+int	reinit_stack_index(t_stack	**stack)
 {
 	t_stack	*temp;
 	int		i;
 
-	temp = *stack_a;
-	i = 0;
-	if (!temp)
-		return (0);
-	while (temp)
-	{
-		temp->index = i++;
-		temp = temp->next;
-	}
-	temp = *stack_b;
+	temp = *stack;
 	i = 0;
 	if (!temp)
 		return (0);

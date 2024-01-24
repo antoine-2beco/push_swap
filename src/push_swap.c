@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/22 15:27:17 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:21:44 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ static int	print_stack(t_stack **stack, char stack_name)
 	ft_printf("=== stack_%c ===\n", stack_name);
 	while (temp)
 	{
-		if (stack_name == 'b')
+		if (temp->push_cost == 0)
 		{
 			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n",
 				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next);
 		}
 		else
 		{
-			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i, push_cost = %i\n",
-				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr, temp->push_cost);
+			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i\n",
+				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr);
 		}
 		temp = temp->next;
 	}
@@ -52,13 +52,16 @@ int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 	if (is_sorted(stack_a))
 		return (1);
 	if (stack_a_len <= 3)
-		return (sort_3_nodes(stack_a, 'a'));
-	push_node(stack_b, stack_a, 'b');
-	push_node(stack_b, stack_a, 'b');
-	reinit_stack_index(stack_a, stack_b);
-	init_target_node(stack_a, stack_b);
-	init_push_cost(stack_a);
-
+		return (sort_3_nodes(stack_a, 'a', 0));
+	push_node(stack_a, stack_b, 'b');
+	push_node(stack_a, stack_b, 'b');
+	while (get_stack_len(stack_a) > 3)
+	{
+		init_target_node(stack_a, stack_b);
+		init_push_cost(stack_a);
+		push_min_cost_node(stack_a, 'a', stack_b, 'b');
+	}
+	sort_3_nodes(stack_a, 'a', 1);
 	return (1);
 }
 
