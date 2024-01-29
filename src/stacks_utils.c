@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 10:15:07 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:23:51 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if (!stack)
+	if (!stack || !*stack)
 		return (0);
 	while (*stack)
 	{
@@ -77,10 +77,10 @@ static int	add_node(t_stack **stack, int nbr, int index)
 	t_stack	*last_node;
 
 	if (!stack)
-		return (error(0, "stack is NULL in add_node\n", 0, 0));
+		return (error(0, "stack is NULL in add_node", 0, 0));
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return (error(0, "node malloc failed in add_node\n", 0, 0));
+		return (error(0, "node malloc failed in add_node", 0, 0));
 	node->nbr = nbr;
 	node->index = index;
 	node->next = NULL;
@@ -104,25 +104,24 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	char	**args;
 	int		i;
 	int		j;
-	int		k;
+	int		ret;
 
 	i = -1;
 	j = -1;
+	ret = 1;
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
 		args = ++argv;
-	while (args[++i])
+	if (!verify_args(args))
+		ret = error(0, "verify_arg return NULL", 0 ,0);
+	while (args[++i] && ret == 1)
 	{
-		k = ft_atoi(args[i]);
-		while (args[++j])
-			if (ft_atoi(args[j]) == k && j != i)
-				return (error(0, "Two or many same numbers\n", 0, 0));
-		if (!add_node(stack, k, i))
-			return (error(0, "add_node return NULL\n", 0, 0));
+		if (!add_node(stack, ft_atoi(args[i]), i))
+			ret = error(0, "add_node return NULL", 0 ,0);
 		j = -1;
 	}
 	if (argc == 2)
 		free(args);
-	return (1);
+	return (ret);
 }
