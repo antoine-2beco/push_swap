@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 14:14:34 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:15:07 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	free_stack(t_stack **stack)
 	t_stack	*temp;
 
 	if (!stack)
-		return (error(0, "stack is NULL in free_stack"));
+		return (0);
 	while (*stack)
 	{
 		temp = (*stack)->next;
@@ -77,10 +77,10 @@ static int	add_node(t_stack **stack, int nbr, int index)
 	t_stack	*last_node;
 
 	if (!stack)
-		return (error(0, "stack is NULL in add_node\n"));
+		return (error(0, "stack is NULL in add_node\n", 0, 0));
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return (error(0, "node malloc failed in add_node\n"));
+		return (error(0, "node malloc failed in add_node\n", 0, 0));
 	node->nbr = nbr;
 	node->index = index;
 	node->next = NULL;
@@ -117,9 +117,9 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 		k = ft_atoi(args[i]);
 		while (args[++j])
 			if (ft_atoi(args[j]) == k && j != i)
-				return (error(0, "Two or many same numbers\n"));
+				return (error(0, "Two or many same numbers\n", 0, 0));
 		if (!add_node(stack, k, i))
-			return (error(0, "add_node return NULL\n"));
+			return (error(0, "add_node return NULL\n", 0, 0));
 		j = -1;
 	}
 	if (argc == 2)
