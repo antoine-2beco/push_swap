@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 11:22:06 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/29 12:56:27 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../libft/libft.h"
+
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -29,7 +31,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int		error(int ret, char *str, t_stack **stack_a, t_stack **stack_b);
+int		error(int ret, t_stack **stack_a, t_stack **stack_b);
 int		verify_args(char **args);
 int		push_swap(int argc, char *argv[]);
 

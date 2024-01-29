@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 11:23:51 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:14:18 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ static int	add_node(t_stack **stack, int nbr, int index)
 	t_stack	*last_node;
 
 	if (!stack)
-		return (error(0, "stack is NULL in add_node", 0, 0));
+		return (0);
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return (error(0, "node malloc failed in add_node", 0, 0));
+		return (0);
 	node->nbr = nbr;
 	node->index = index;
 	node->next = NULL;
@@ -113,12 +113,12 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 		args = ft_split(argv[1], ' ');
 	else
 		args = ++argv;
-	if (!verify_args(args))
-		ret = error(0, "verify_arg return NULL", 0 ,0);
+	if (!*args || !verify_args(args))
+		ret = 0;
 	while (args[++i] && ret == 1)
 	{
 		if (!add_node(stack, ft_atoi(args[i]), i))
-			ret = error(0, "add_node return NULL", 0 ,0);
+			ret = 0;
 		j = -1;
 	}
 	if (argc == 2)
