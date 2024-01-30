@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 13:14:18 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:53:37 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,22 @@ int	free_stack(t_stack **stack)
 		return (0);
 	while (*stack)
 	{
-		temp = (*stack)->next;
-		temp->nbr = 0;
-		temp->index = 0;
-		temp->push_cost = 0;
-		temp->above_median = NULL;
-		temp->cheapest = NULL;
-		temp->target = NULL;
-		temp->prev = NULL;
-		temp->next = NULL;
-		free (temp);
 		temp = NULL;
+		if ((*stack)->next)
+			temp = (*stack)->next;
+		(*stack)->nbr = 0;
+		(*stack)->index = 0;
+		(*stack)->push_cost = 0;
+		(*stack)->above_median = NULL;
+		(*stack)->cheapest = NULL;
+		(*stack)->target = NULL;
+		(*stack)->prev = NULL;
+		(*stack)->next = NULL;
+		free (*stack);
+		*stack = NULL;
 		*stack = temp;
 	}
+	*stack = NULL;
 	return (1);
 }
 
@@ -103,11 +106,9 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 {
 	char	**args;
 	int		i;
-	int		j;
 	int		ret;
 
 	i = -1;
-	j = -1;
 	ret = 1;
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
@@ -116,11 +117,8 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	if (!*args || !verify_args(args))
 		ret = 0;
 	while (args[++i] && ret == 1)
-	{
 		if (!add_node(stack, ft_atoi(args[i]), i))
 			ret = 0;
-		j = -1;
-	}
 	if (argc == 2)
 		free(args);
 	return (ret);
