@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 12:46:55 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:39:39 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ int	is_sorted(t_stack **stack)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
+	i = INT32_MIN;
 	temp = *stack;
 	if (!temp || !temp->next)
 		return (0);
