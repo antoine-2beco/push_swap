@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 11:41:58 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:09:48 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	init_push_cost(t_stack **stack_a, t_stack **stack_b)
 	{
 		target = temp->target;
 		push_cost = temp->index;
-		if (push_cost > ((max_index_a - push_cost) + 1))
-			push_cost = ((max_index_a - push_cost) + 1);
+		if (temp->index > ((max_index_a - temp->index) + 1))
+			push_cost = ((max_index_a - temp->index) + 1);
 		if (target->index > (max_index_b / 2))
 			push_cost += ((max_index_b - target->index) + 1);
 		else
@@ -90,7 +90,7 @@ int	sort_push_node(t_stack **stack_a, t_stack **stack_b)
 	min_cost_node = *stack_a;
 	while (temp)
 	{
-		if (min_cost_node->push_cost > temp->push_cost)
+		if ((min_cost_node->push_cost > temp->push_cost))
 			min_cost_node = temp;
 		temp = temp->next;
 	}

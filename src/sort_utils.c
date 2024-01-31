@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 11:38:51 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:59:17 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	put_node_on_top(t_stack **stack, char stack_name, t_stack **node)
 
 	max_index = get_stack_len(stack) - 1;
 	i = 0;
-	if ((*node)->index > (max_index / 2))
+	if ((*node)->index > ((max_index - (*node)->index) + 1))
 	{
 		i = ((max_index - (*node)->index) + 1);
 		while (i-- > 0)

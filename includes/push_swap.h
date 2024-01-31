@@ -6,26 +6,21 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 11:42:14 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:17:36 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdbool.h>
 # include <limits.h>
 # include "../libft/libft.h"
-
-# include <stdio.h>
 
 typedef struct s_stack
 {
 	int				nbr;
 	int				index;
 	int				push_cost;
-	bool			above_median;
-	bool			cheapest;
 	struct s_stack	*target;
 	struct s_stack	*prev;
 	struct s_stack	*next;
@@ -48,7 +43,6 @@ int		rotate_node(t_stack **stack, char stack_name, int print);
 int		reverse_rotate_node(t_stack **stack, char stack_name, int print);
 
 // perations_shortcuts
-int		d_swap_node(t_stack **stack_a, t_stack **stack_b);
 int		d_rotate_node(t_stack **stack_a, t_stack **stack_b);
 int		d_reverse_rotate_node(t_stack **stack_a, t_stack **stack_b);
 

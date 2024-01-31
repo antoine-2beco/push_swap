@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/30 18:53:37 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:19:50 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	free_stack(t_stack **stack)
 		(*stack)->nbr = 0;
 		(*stack)->index = 0;
 		(*stack)->push_cost = 0;
-		(*stack)->above_median = NULL;
-		(*stack)->cheapest = NULL;
 		(*stack)->target = NULL;
 		(*stack)->prev = NULL;
 		(*stack)->next = NULL;

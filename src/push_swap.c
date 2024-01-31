@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 11:42:46 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:50:06 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	verify_args(char **args)
 			return (0);
 		while (args[i][++j])
 		{
-			if (!ft_isdigit(args[i][j]) && args[i][j] != '-' &
-				args[i][j] != '+')
+			if (!ft_isdigit(args[i][j]) && (args[i][j] != '-')
+				&& (args[i][j] != '+'))
 				return (0);
 		}
 		j = -1;
@@ -48,31 +48,6 @@ int	verify_args(char **args)
 			if ((int)ft_atoi(args[j]) == arg && j != i)
 				return (0);
 		}
-	}
-	return (1);
-}
-
-static int	print_stack(t_stack **stack, char stack_name)
-{
-	t_stack	*temp;
-
-	temp = *stack;
-	if (!temp)
-		return (0);
-	ft_printf("=== stack_%c ===\n", stack_name);
-	while (temp)
-	{
-		if (1)
-		{
-			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p\n",
-				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next);
-		}
-		else
-		{
-			printf("%p : nbr = %i, index = %i, push_cost = %i, prev = %p, next = %p, target = %p, tgt_nbr = %i\n",
-				temp, temp->nbr, temp->index, temp->push_cost, temp->prev, temp->next, temp->target, (temp->target)->nbr);
-		}
-		temp = temp->next;
 	}
 	return (1);
 }
@@ -116,6 +91,5 @@ int	main(int argc, char *argv[])
 		return (error(0, &stack_a, &stack_b));
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	print_stack(&stack_a, 'c');
 	return (1);
 }
