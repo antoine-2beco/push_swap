@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/29 12:56:27 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:42:14 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int		init_stack(int argc, char *argv[], t_stack **stack);
 // operations
 int		swap_node(t_stack **stack, char stack_name);
 int		push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r);
-int		rotate_node(t_stack **stack, char stack_name);
-int		reverse_rotate_node(t_stack **stack, char stack_name);
+int		rotate_node(t_stack **stack, char stack_name, int print);
+int		reverse_rotate_node(t_stack **stack, char stack_name, int print);
 
 // perations_shortcuts
 int		d_swap_node(t_stack **stack_a, t_stack **stack_b);
@@ -55,13 +55,13 @@ int		d_reverse_rotate_node(t_stack **stack_a, t_stack **stack_b);
 // sort
 int		sort_3_nodes(t_stack **stack, char stack_name);
 int		init_target_node(t_stack **stack_a, t_stack **stack_b);
-int		init_push_cost(t_stack **stack);
-int		sort_push_node(t_stack **stack_p, char stack_p_name,
-			t_stack **stack_r, char stack_r_name);
-int		sort_push_back_node(t_stack **stack_a,
-			t_stack **stack_b);
+int		init_push_cost(t_stack **stack_a, t_stack **stack_b);
+int		sort_push_node(t_stack **stack_a, t_stack **stack_b);
+int		sort_push_back_node(t_stack **stack_a, t_stack **stack_b);
 
 // sort_utils
+int		put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
+			t_stack **node_a, t_stack **node_b);
 int		put_node_on_top(t_stack **stack, char stack_name, t_stack **node);
 t_stack	*get_max_node(t_stack **stack);
 t_stack	*get_min_node(t_stack **stack);

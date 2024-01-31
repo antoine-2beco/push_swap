@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:57:35 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/24 19:19:23 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:32:47 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r)
 	return (1);
 }
 
-int	rotate_node(t_stack **stack, char stack_name)
+int	rotate_node(t_stack **stack, char stack_name, int print)
 {
 	t_stack	*first_node;
 	t_stack	*second_node;
@@ -85,11 +85,12 @@ int	rotate_node(t_stack **stack, char stack_name)
 	first_node->next = NULL;
 	*stack = second_node;
 	reinit_stack_index(stack);
-	ft_printf("r%c\n", stack_name);
+	if (print == 1)
+		ft_printf("r%c\n", stack_name);
 	return (1);
 }
 
-int	reverse_rotate_node(t_stack **stack, char stack_name)
+int	reverse_rotate_node(t_stack **stack, char stack_name, int print)
 {
 	t_stack	*first_node;
 	t_stack	*last_node;
@@ -108,6 +109,7 @@ int	reverse_rotate_node(t_stack **stack, char stack_name)
 	before_last_node->next = NULL;
 	*stack = last_node;
 	reinit_stack_index(stack);
-	ft_printf("rr%c\n", stack_name);
+	if (print == 1)
+		ft_printf("rr%c\n", stack_name);
 	return (1);
 }
