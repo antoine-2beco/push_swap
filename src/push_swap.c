@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 17:50:06 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:31:05 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	verify_args(char **args)
 			return (0);
 		while (args[i][++j])
 		{
-			if (!ft_isdigit(args[i][j]) && (args[i][j] != '-')
-				&& (args[i][j] != '+'))
+			if (!ft_isdigit(args[i][j]) && args[i][j] != '-'
+				&& args[i][j] != '+' )
 				return (0);
 		}
 		j = -1;
