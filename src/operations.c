@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:57:35 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 11:32:47 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:10:27 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	rotate_node(t_stack **stack, char stack_name, int print)
 	first_node->next = NULL;
 	*stack = second_node;
 	reinit_stack_index(stack);
-	if (print == 1)
+	if (print)
 		ft_printf("r%c\n", stack_name);
 	return (1);
 }
@@ -109,7 +109,7 @@ int	reverse_rotate_node(t_stack **stack, char stack_name, int print)
 	before_last_node->next = NULL;
 	*stack = last_node;
 	reinit_stack_index(stack);
-	if (print == 1)
+	if (print)
 		ft_printf("rr%c\n", stack_name);
 	return (1);
 }
