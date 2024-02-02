@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 16:59:17 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:14:14 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ t_stack	*get_min_node(t_stack **stack)
 
 int	is_sorted(t_stack **stack)
 {
-	t_stack	*temp;
-	int		i;
-	int		j;
+	t_stack		*temp;
+	long		i;
+	int			j;
 
-	i = INT32_MIN;
 	temp = *stack;
 	if (!temp || !temp->next)
 		return (0);
+	i = temp->nbr;
 	while (temp)
 	{
 		j = temp->nbr;
