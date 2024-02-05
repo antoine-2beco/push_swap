@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 17:09:48 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:12:11 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,19 @@ int	init_target_node(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp_a;
 	t_stack	*temp_b;
-	int		target_val;
+	int		i;
 
 	temp_a = *stack_a;
 	while (temp_a)
 	{
-		target_val = 0;
+		i = 0;
 		temp_b = *stack_b;
 		temp_a->target = get_max_node(stack_b);
 		while (temp_b)
 		{
-			if ((temp_a->nbr - temp_b->nbr) > 0
-				&& (!target_val || target_val > (temp_a->nbr - temp_b->nbr)))
-			{
-				target_val = (temp_a->nbr - temp_b->nbr);
+			if ((temp_a->nbr > temp_b->nbr)
+				&& (!i++ || (temp_a->target)->nbr < temp_b->nbr))
 				temp_a->target = temp_b;
-			}
 			temp_b = temp_b->next;
 		}
 		temp_a = temp_a->next;
@@ -102,24 +99,21 @@ int	sort_push_node(t_stack **stack_a, t_stack **stack_b)
 int	sort_push_back_node(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp_a;
-	t_stack	*temp_n;
-	int		target_val;
+	t_stack	*temp_b;
+	int		i;
 
-	target_val = 0;
+	i = 0;
 	temp_a = *stack_a;
-	temp_n = *stack_b;
-	temp_n->target = get_min_node(stack_a);
+	temp_b = *stack_b;
+	temp_b->target = get_min_node(stack_a);
 	while (temp_a)
 	{
-		if ((temp_n->nbr < temp_a->nbr)
-			&& (!target_val || target_val > (temp_a->nbr - temp_n->nbr)))
-		{
-			target_val = (temp_a->nbr - temp_n->nbr);
-			temp_n->target = temp_a;
-		}
+		if ((temp_b->nbr < temp_a->nbr)
+			&& (!i++ || ((temp_b->target)->nbr > temp_a->nbr)))
+			temp_b->target = temp_a;
 		temp_a = temp_a->next;
 	}
-	put_node_on_top(stack_a, 'a', &temp_n->target);
+	put_node_on_top(stack_a, 'a', &temp_b->target);
 	push_node(stack_b, stack_a, 'a');
 	return (1);
 }
