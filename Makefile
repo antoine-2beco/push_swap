@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/01/29 13:19:26 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/02/07 15:20:49 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(PUSH_SWAP): $(OBJECTS) $(LIBFT_PATH)
 					@cp $(LIBFT_PATH)$(LIBFT).a $(PUSH_SWAP)
 					@echo "Creating Push_Swap Executable..."
 					@ar -rcs $(PUSH_SWAP) $(OBJECTS)
-					@gcc $(PUSH_SWAP) -fsanitize=address -o $(PUSH_SWAP)
+					@cc $(PUSH_SWAP) -Wall -Wextra -Werror -o $(PUSH_SWAP)
 					@echo "OK !"
 
 $(OBJECTS): $(SRCS_D)
@@ -54,4 +54,4 @@ fclean:		clean
 					@echo "OK !"
 
 re:			fclean all 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean resßßß
