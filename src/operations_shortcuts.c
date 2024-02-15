@@ -6,12 +6,11 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:56:27 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/01/31 17:15:42 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:01:14 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../libft/libft.h"
 
 int	d_rotate_node(t_stack **stack_a, t_stack **stack_b)
 {

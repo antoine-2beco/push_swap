@@ -6,26 +6,11 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/15 14:59:58 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:01:03 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../libft/libft.h"
-
-int	sort_3_nodes(t_stack **stack, char stack_name)
-{
-	t_stack	*m_node;
-
-	m_node = get_max_node(stack);
-	if (m_node->index == 1)
-		reverse_rotate_node(stack, stack_name, 1);
-	if (m_node->index == 0)
-		rotate_node(stack, stack_name, 1);
-	if (!is_sorted(stack))
-		swap_node(stack, stack_name);
-	return (1);
-}
 
 int	init_target_node(t_stack **stack_a, t_stack **stack_b)
 {
@@ -86,11 +71,11 @@ int	init_push_cost(t_stack **stack_a, t_stack **stack_b)
 		target = temp->target;
 		push_cost = 1;
 		a = temp->index;
-		if (temp->index > ((get_stack_len(stack_a) - temp->index) + 1))
-			a = 0 - ((get_stack_len(stack_a) - temp->index) + 1);
+		if (temp->index > ((get_stack_len(stack_a) - temp->index)))
+			a = 0 - ((get_stack_len(stack_a) - temp->index));
 		b = target->index;
-		if (target->index > ((get_stack_len(stack_b) - target->index) + 1))
-			b = 0 - ((get_stack_len(stack_b) - target->index) + 1);
+		if (target->index > ((get_stack_len(stack_b) - target->index)))
+			b = 0 - ((get_stack_len(stack_b) - target->index));
 		temp->push_cost = count_push_cost(a, b, push_cost);
 		temp = temp->next;
 	}

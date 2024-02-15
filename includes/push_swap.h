@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/15 14:10:18 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:00:26 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,20 @@ int		d_rotate_node(t_stack **stack_a, t_stack **stack_b);
 int		d_reverse_rotate_node(t_stack **stack_a, t_stack **stack_b);
 
 // sort
-int		sort_3_nodes(t_stack **stack, char stack_name);
 int		init_target_node(t_stack **stack_a, t_stack **stack_b);
 int		init_push_cost(t_stack **stack_a, t_stack **stack_b);
 int		sort_push_node(t_stack **stack_a, t_stack **stack_b);
 int		sort_push_back_node(t_stack **stack_a, t_stack **stack_b);
 
 // sort_utils
-int		put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
-			t_stack **node_a, t_stack **node_b);
-int		put_node_on_top(t_stack **stack, char stack_name, t_stack **node);
 t_stack	*get_max_node(t_stack **stack);
 t_stack	*get_min_node(t_stack **stack);
 int		is_sorted(t_stack **stack);
+
+// sort_operations
+int		sort_3_nodes(t_stack **stack, char stack_name);
+int		put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
+			t_stack **node_a, t_stack **node_b);
+int		put_node_on_top(t_stack **stack, char stack_name, t_stack **node);
 
 #endif

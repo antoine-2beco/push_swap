@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/02/07 15:20:49 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/02/15 16:00:49 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIBFT		=		libft
 LIBFT_PATH	=		./libft/
 
 SRC_PATH	=		./src/
-SRCS 		=		push_swap.c stacks_utils.c operations.c operations_shortcuts.c sort.c sort_utils.c
-SRCS_D 		=		$(SRC_PATH)push_swap.c $(SRC_PATH)stacks_utils.c $(SRC_PATH)operations.c $(SRC_PATH)operations_shortcuts.c $(SRC_PATH)sort.c $(SRC_PATH)sort_utils.c
+SRCS 		=		push_swap.c stacks_utils.c operations.c operations_shortcuts.c sort.c sort_utils.c sort_operations.c
+SRCS_D 		=		$(SRC_PATH)push_swap.c $(SRC_PATH)stacks_utils.c $(SRC_PATH)operations.c $(SRC_PATH)operations_shortcuts.c $(SRC_PATH)sort.c $(SRC_PATH)sort_utils.c $(SRC_PATH)sort_operations.c
 
 OBJECTS		=		$(SRCS:.c=.o)
 
@@ -54,4 +54,4 @@ fclean:		clean
 					@echo "OK !"
 
 re:			fclean all 
-.PHONY:		all clean fclean resßßß
+.PHONY:		all clean fclean re

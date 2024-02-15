@@ -6,12 +6,11 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/15 14:59:03 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:01:24 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../libft/libft.h"
 
 int	error(int ret, t_stack **stack_a, t_stack **stack_b)
 {
