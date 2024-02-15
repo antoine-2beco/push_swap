@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/06 14:55:03 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:10:18 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
+
 
 int		error(int ret, t_stack **stack_a, t_stack **stack_b);
 int		verify_args(char **args);

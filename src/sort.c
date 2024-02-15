@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:04:48 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/05 15:12:11 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:59:58 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,47 @@ int	init_target_node(t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
+static int	count_push_cost(int a, int b, int push_cost)
+{
+	while (a < 0 && b < 0)
+	{
+		push_cost++;
+		a++;
+		b++;
+	}
+	while (a > 0 && b > 0)
+	{
+		push_cost++;
+		a--;
+		b--;
+	}
+	if (a < 0)
+		a = -a;
+	if (b < 0)
+		b = -b;
+	return (push_cost + a + b);
+}
+
 int	init_push_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 	t_stack	*target;
-	int		max_index_a;
-	int		max_index_b;
 	int		push_cost;
+	int		a;
+	int		b;
 
 	temp = *stack_a;
-	max_index_a = get_stack_len(&temp) - 1;
-	max_index_b = get_stack_len(stack_b) - 1;
 	while (temp)
 	{
 		target = temp->target;
-		push_cost = temp->index;
-		if (temp->index > ((max_index_a - temp->index) + 1))
-			push_cost = ((max_index_a - temp->index) + 1);
-		if (target->index > (max_index_b / 2))
-			push_cost += ((max_index_b - target->index) + 1);
-		else
-			push_cost += target->index;
-		temp->push_cost = push_cost + 1;
+		push_cost = 1;
+		a = temp->index;
+		if (temp->index > ((get_stack_len(stack_a) - temp->index) + 1))
+			a = 0 - ((get_stack_len(stack_a) - temp->index) + 1);
+		b = target->index;
+		if (target->index > ((get_stack_len(stack_b) - target->index) + 1))
+			b = 0 - ((get_stack_len(stack_b) - target->index) + 1);
+		temp->push_cost = count_push_cost(a, b, push_cost);
 		temp = temp->next;
 	}
 	return (1);
@@ -87,7 +106,7 @@ int	sort_push_node(t_stack **stack_a, t_stack **stack_b)
 	min_cost_node = *stack_a;
 	while (temp)
 	{
-		if ((min_cost_node->push_cost > temp->push_cost))
+		if (min_cost_node->push_cost > temp->push_cost)
 			min_cost_node = temp;
 		temp = temp->next;
 	}

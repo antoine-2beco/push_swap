@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 11:55:19 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/02 18:14:14 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:47:41 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,24 @@ int	put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
 	int	cost_a;
 	int	cost_b;
 
+	cost_a = (*node_a)->index;
 	if ((*node_a)->index > ((get_stack_len(stack_a) - (*node_a)->index) + 1))
 		cost_a = 0 - ((get_stack_len(stack_a) - (*node_a)->index) + 1);
-	else
-		cost_a = (*node_a)->index;
+	cost_b = (*node_b)->index;
 	if ((*node_b)->index > ((get_stack_len(stack_b) - (*node_b)->index) + 1))
 		cost_b = 0 - ((get_stack_len(stack_b) - (*node_b)->index) + 1);
-	else
-		cost_b = (*node_b)->index;
-	while (cost_a++ < 0 && cost_b++ < 0)
+	while (cost_a < 0 && cost_b < 0)
+	{
 		d_reverse_rotate_node(stack_a, stack_b);
-	while (cost_a-- > 0 && cost_b-- > 0)
+		cost_a++;
+		cost_b++;
+	}
+	while (cost_a > 0 && cost_b > 0)
+	{
 		d_rotate_node(stack_a, stack_b);
+		cost_a--;
+		cost_b--;
+	}
 	put_node_on_top(stack_a, 'a', node_a);
 	put_node_on_top(stack_b, 'b', node_b);
 	return (1);
