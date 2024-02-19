@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:27:34 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/15 16:01:24 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:44:46 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	verify_args(char **args)
 	return (1);
 }
 
-int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
+static int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 {
 	t_stack	*temp;
 
@@ -59,8 +59,8 @@ int	sort_stacks(t_stack **stack_a, t_stack **stack_b, int stack_a_len)
 		return (1);
 	if (stack_a_len <= 3)
 		return (sort_3_nodes(stack_a, 'a'));
-	push_node(stack_a, stack_b, 'b');
-	push_node(stack_a, stack_b, 'b');
+	push_node(stack_a, stack_b, 'b', 1);
+	push_node(stack_a, stack_b, 'b', 1);
 	while (get_stack_len(stack_a) > 3)
 	{
 		init_target_node(stack_a, stack_b);

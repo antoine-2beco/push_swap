@@ -6,11 +6,12 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:58:51 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/15 16:01:27 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:32:32 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 int	sort_3_nodes(t_stack **stack, char stack_name)
 {
 	t_stack	*m_node;
@@ -21,7 +22,7 @@ int	sort_3_nodes(t_stack **stack, char stack_name)
 	if (m_node->index == 0)
 		rotate_node(stack, stack_name, 1);
 	if (!is_sorted(stack))
-		swap_node(stack, stack_name);
+		swap_node(stack, stack_name, 1);
 	return (1);
 }
 
@@ -39,13 +40,13 @@ int	put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
 		cost_b = 0 - ((get_stack_len(stack_b) - (*node_b)->index));
 	while (cost_a < 0 && cost_b < 0)
 	{
-		d_reverse_rotate_node(stack_a, stack_b);
+		d_reverse_rotate_node(stack_a, stack_b, 1);
 		cost_a++;
 		cost_b++;
 	}
 	while (cost_a > 0 && cost_b > 0)
 	{
-		d_rotate_node(stack_a, stack_b);
+		d_rotate_node(stack_a, stack_b, 0);
 		cost_a--;
 		cost_b--;
 	}
