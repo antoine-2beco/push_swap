@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/02/19 19:14:29 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/02/19 19:30:40 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ B_INC		=		-I includes/$(CHECKER)_bonus.h -I $(LIBFT_PATH)$(LIBFT).h
 all: 			$(OBJECTS) $(PUSH_SWAP)
 
 %.o:			%.c
-					gcc -Wall -Wextra -Werror -c $< -o $(<:c=o)
+					@gcc -Wall -Wextra -Werror -c $< -o $(<:c=o)
 
 $(PUSH_SWAP):	$(OBJECTS)
 					@echo "Compiling Libft..."
