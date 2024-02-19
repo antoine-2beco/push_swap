@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:58:51 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/19 11:32:32 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:12:09 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	put_nodes_on_top(t_stack **stack_a, t_stack **stack_b,
 	}
 	while (cost_a > 0 && cost_b > 0)
 	{
-		d_rotate_node(stack_a, stack_b, 0);
+		d_rotate_node(stack_a, stack_b, 1);
 		cost_a--;
 		cost_b--;
 	}

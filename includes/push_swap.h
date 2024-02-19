@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:15:11 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/19 11:31:25 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:07:43 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		init_stack(int argc, char *argv[], t_stack **stack);
 
 // operations
 int		swap_node(t_stack **stack, char stack_name, int print);
-int		push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r, 
+int		push_node(t_stack **stack_p, t_stack **stack_r, char stack_name_r,
 			int print);
 int		rotate_node(t_stack **stack, char stack_name, int print);
 int		reverse_rotate_node(t_stack **stack, char stack_name, int print);
