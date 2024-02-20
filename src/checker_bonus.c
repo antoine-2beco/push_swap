@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:21:33 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/19 19:29:27 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:33:22 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	verify_args(char **args)
 	{
 		j = -1;
 		arg = ft_atoi(args[i]);
-		if (arg > INT32_MAX || arg < INT32_MIN)
+		if (!args[i][0] || arg > INT32_MAX || arg < INT32_MIN)
 			return (0);
 		while (args[i][++j])
 		{
@@ -110,7 +110,8 @@ int	main(int argc, char *argv[])
 		return (error(0, &stack_a, &stack_b));
 	if (!sort_stacks(&stack_a, &stack_b))
 		return (error(0, &stack_a, &stack_b));
-	if (!is_sorted(&stack_a) || get_stack_len(&stack_b) != 0)
+	if (get_stack_len(&stack_a) != 1
+		&& (!is_sorted(&stack_a) || get_stack_len(&stack_b) != 0))
 	{
 		ft_printf("KO\n");
 		if (stack_a)

@@ -6,7 +6,7 @@
 #    By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/07 15:13:16 by ade-beco          #+#    #+#              #
-#    Updated: 2024/02/19 19:30:40 by ade-beco         ###   ########.fr        #
+#    Updated: 2024/02/20 10:21:36 by ade-beco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(CHECKER):		$(B_OBJECTS)
 					@echo "OK !"
 					@echo "Compiling and Creating Checker..."
 					@ar -rcs $(CHECKER) $(B_OBJECTS)
-					gcc $(CHECKER) -Wall -Wextra -Werror $(B_INC) -o $(CHECKER)
+					@gcc $(CHECKER) -Wall -Wextra -Werror $(B_INC) -o $(CHECKER)
 					@echo "OK !"
 
 re:				fclean all 
