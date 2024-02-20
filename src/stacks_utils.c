@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:49:20 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/19 20:25:36 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:37:48 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,12 @@ int	init_stack(int argc, char *argv[], t_stack **stack)
 	while (args[++i] && ret == 1)
 		if (!add_node(stack, ft_atoi(args[i]), i))
 			ret = 0;
+	i = 0;
 	if (argc == 2)
+	{
+		while (args[i])
+			free(args[i++]);
 		free(args);
+	}
 	return (ret);
 }
