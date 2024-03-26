@@ -6,7 +6,7 @@
 /*   By: ade-beco <ade-beco@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:21:33 by ade-beco          #+#    #+#             */
-/*   Updated: 2024/02/20 15:41:48 by ade-beco         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:58:00 by ade-beco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,16 @@ static int	sort_stacks(t_stack **stack_a, t_stack **stack_b)
 	char	*line;
 
 	line = get_next_line(STDIN_FILENO);
+	if (!line)
+		return (0);
 	while (line)
 	{
 		if (!get_operation(stack_a, stack_b, line))
 			return (0);
 		free (line);
 		line = get_next_line(STDIN_FILENO);
+		if (!line)
+			return (0);
 	}
 	free (line);
 	line = NULL;
